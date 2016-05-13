@@ -1,0 +1,107 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic);
+*{box-sizing: border-box;}
+nav {
+    background: #413F3C;
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+}
+nav:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+ul {
+    margin-left: 20px;
+    padding: 0;
+
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    -webkit-transition: .3s linear;
+    transition: .3s linear;
+}
+.menu > li {
+    float: left;
+    position: relative;
+    border-left: 1px solid black;
+}
+.menu > li:first-child {
+    border-left: 0;
+}
+.menu > li > a {
+    display: block;
+    padding: 20px 30px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #FEFDFD;
+    letter-spacing: 2px;
+}
+.menu > li > a.active, .submenu > li >a:hover {
+    color: black;
+}
+.menu .fa, .submenu .fa {
+    margin-left: 5px;
+    color: inherit;
+}
+.submenu {
+    position: absolute;
+    border-top: 1px solid #CBCBCC;
+    border-left: 1px solid #CBCBCC;
+    border-right: 1px solid #CBCBCC;
+    background: white;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 10;
+    -webkit-transform-origin: 0% 0%;
+    -moz-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: rotateX(-90deg);
+    -moz-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+    -webkit-transition: .3s linear;
+    transition: .3s linear;
+    min-width: 200px;
+}
+.submenu li {
+    position: relative;
+}
+.submenu li a {
+    color: #282828;
+    display: block;
+    padding: 10px 20px;
+    font-size: 13px;
+    border-bottom: 1px solid #CBCBCC;
+}
+.submenu .submenu {
+    position: absolute;
+    left: 100%;
+    top: -1px;
+    -webkit-transition: .4s linear;
+    transition: .4s linear;
+}
+.submenu li {
+    position: relative;
+}
+li:hover > .submenu {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    visibility: visible;
+    opacity: 1;
+}
+
+#user-profile {
+    width: 500px;
+    margin-left: 150px;
+}
+
+.container-admin-announcement{
+
+    margin-left:100px;
+    margin-top:50px;
+    width: 1050px
+}
