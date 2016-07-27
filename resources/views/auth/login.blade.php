@@ -10,22 +10,22 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">E-Mail Address</label>
+                        <div class="form-group{{ $errors->has('card_id') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">ID-Number</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input type="email" class="form-control" name="email" value="{{ old('card_id') }}">
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('card_id'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('card_id') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label class="col-md-4 control-label">Password</label>
+                            <label class="col-md-4 control-label">ID-Password</label>
 
                             <div class="col-md-6">
                                 <input type="password" class="form-control" name="password">
@@ -45,12 +45,6 @@
                                         <input type="checkbox" name="remember"> Remember Me
                                     </label>
                                 </div>
-
-                                <a class="btn btn-lg btn-primary btn-block facebook" href="/facebookLogin">FacebookLogin</a>
-                                <a class="btn btn-lg btn-primary btn-block google" href="/googleLogin">GoogleLogin</a>
-                                <a class="btn btn-lg btn-primary btn-block yandex" href="/yandexLogin">YandexLogin</a>
-                                <a class="btn btn-lg btn-primary btn-block mailru" href="/mailruLogin">Mail-ruLogin</a>
-                                <a class="btn btn-lg btn-primary btn-block mailru" href="/odnoLogin">OdnoklasnikiLogin</a>
                             </div>
                         </div>
 

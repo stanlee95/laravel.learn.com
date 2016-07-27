@@ -204,6 +204,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Helpers'   => 'App\Helpers\Helpers',
 
+        'CoreServicesFactory' => Core\Facades\CoreConnectionFactoryFacade::class,
+
     ],
 
 ];

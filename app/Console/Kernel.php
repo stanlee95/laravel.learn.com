@@ -2,8 +2,11 @@
 
 namespace App\Console;
 
+use DB;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use \Core\Connection\CronInit;
+use \Core\Connection\CronLib;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,7 +27,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function () {
+            $connect = new CronInit(new CronLib);
+            $connect->connectToDump();
+        })->everyMinute();
     }
 }

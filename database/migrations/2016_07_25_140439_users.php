@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class Users extends Migration
 {
     /**
      * Run the migrations.
@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('card_id')->unique();
             $table->dateTime('valid_to')->nullable();
             $table->string('password')->nullable();;
-            $table->string('role')->nullable();
+            $table->string('role')->default('student');
             $table->string('avatar')->nullable();
             $table->enum('status', array('allow', 'deny'));
             $table->rememberToken();

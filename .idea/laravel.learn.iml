@@ -7,16 +7,22 @@
     <orderEntry type="module-library">
       <library name="PHARS">
         <CLASSES>
-          <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/PEAR/go-pear.phar/" />
           <root url="phar://$MODULE_DIR$/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/zf/tests/Zend/Loader/_files/classmap.phar/" />
           <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/composer.phar/" />
           <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/pharcommand.phar/" />
+          <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/zf/tests/Zend/Loader/_files/Zend_LoaderTest.phar/" />
+          <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/zf/library/Zend/Service/WindowsAzure/CommandLine/Scaffolders/DefaultScaffolder.phar/" />
+          <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/PEAR/go-pear.phar/" />
         </CLASSES>
         <SOURCES>
-          <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/PEAR/go-pear.phar/" />
           <root url="phar://$MODULE_DIR$/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/zf/tests/Zend/Loader/_files/classmap.phar/" />
           <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/composer.phar/" />
           <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/pharcommand.phar/" />
+          <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/zf/tests/Zend/Loader/_files/Zend_LoaderTest.phar/" />
+          <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/zf/library/Zend/Service/WindowsAzure/CommandLine/Scaffolders/DefaultScaffolder.phar/" />
+          <root url="phar://$MODULE_DIR$/../../modules/php/PHP-5.6/PEAR/go-pear.phar/" />
         </SOURCES>
       </library>
     </orderEntry>

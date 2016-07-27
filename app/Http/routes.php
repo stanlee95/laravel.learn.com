@@ -58,6 +58,7 @@ Route::post('/user-profile/change', 'UserController@change');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/test', 'HomeController@cron');
 
 //------LoGin with socials-----------------------------------------
 Route::get('facebookLogin', 'Auth\AuthController@facebookLogin');
