@@ -122,7 +122,7 @@ abstract class ConnectionAbstract
                     }
                 }
             }
-             $this->_setSession(['name' => 'counter', 'value' => $count+1]);
+            $this->_setSession(['name' => 'counter', 'value' => $count + 1]);
         } else {
             \Exception('error');
         }
@@ -204,7 +204,7 @@ abstract class ConnectionAbstract
 
     /**
      *
-     * @return mixed
+     * @return boolean
      */
     protected function _prepareToConnection()
     {
@@ -217,6 +217,24 @@ abstract class ConnectionAbstract
                 return false;
             }
         }
+
+        return true;
+    }
+
+    /**
+     *
+     * @return boolean
+     */
+    protected function _clearDump()
+    {
+        $file = storage_path('dump') . DIRECTORY_SEPARATOR . 'data.json';
+        if (file_exists($file)) {
+            file_put_contents($file, ' ');
+            $this->_setSession(['name' => 'counter', 'value' => 0]);
+        } else {
+            throw new \Exception('File not exist');
+        }
+
         return true;
     }
 

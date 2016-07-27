@@ -61,7 +61,7 @@
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li><a href="{{ url('/admin-panel') }}">AdminPanel</a></li>
-                        <li><a href="{{ url('/chat') }}">StudentsChat</a></li>
+                        <li><a href="{{ url('/discuss') }}">DiscussRoom</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -78,17 +78,17 @@
         </div>
     </nav>
 
-    <ul class="menu">
-        <li><a href="" class="active">Categories:<span class="fa fa-angle-down"></span></a>
-            <ul class="submenu">
-                @foreach($category as $item)
-                    <li><a href="/category/{{$item->id}}">{{$item->name}}</a>
-                        {{Helpers::recursion($sub_category, $item->id)}}
-                    </li>
-                @endforeach
-            </ul>
-        </li>
-    </ul>
+<!--    <ul class="menu">-->
+<!--        <li><a href="" class="active">Categories:<span class="fa fa-angle-down"></span></a>-->
+<!--            <ul class="submenu">-->
+<!--                @foreach($category as $item)-->
+<!--                    <li><a href="/category/{{$item->id}}">{{$item->name}}</a>-->
+<!--                        {{Helpers::recursion($sub_category, $item->id)}}-->
+<!--                    </li>-->
+<!--                @endforeach-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--    </ul>-->
     <div align="right" style="margin-right: 50px">
         <button type="button" class="btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">
             Search
@@ -122,5 +122,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
     <script src="/js/readmore.js" type="text/javascript"></script>
+    <script src="/js/ajax.js" type="text/javascript"></script>
 </body>
 </html>

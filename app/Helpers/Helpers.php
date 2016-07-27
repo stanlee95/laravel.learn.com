@@ -86,42 +86,42 @@ class Helpers {
             echo '</div><br>';
         }
     }
-        public static function recursionAllCategory($category, $parent_id){
-
-            if(empty($category[$parent_id])) {
-                return;
-            }
-            echo '<ul class="list-group">';
-            foreach ($category[$parent_id] as $item){
-
-                echo '<li class="list-group-item"><b>ID:</b>'. $item->id .' <br> <b>Name:</b>' . $item->name .
-                '; <b>Published:</b>'.$item->published.'; <b>Created:</b>'.$item->created_at;
-                echo '<li class="list-group-item"><p><a class="sta" href = "/admin-panel/delete-category/'.$item->id.'"><button type="button" class="btn btn-xs btn-default">Delete</button></a>
-                    
-                    <a href="#id" onclick="document.getElementById(\'parent_id\').value =' . $item->id .'"><button type="button"
-                                                                                                          class="btn btn-xs btn-default">CreateSubCategory</button> </a></li>';
-
-
-                self::recursionAllCategory($category,$item->id);
-                echo '</li>';
-
-            }
-            echo '</ul>';
-        }
-
-    public static function recursionDeleteCategory($category, $parent_id){
-
-        if(empty($category[$parent_id])) {
-            return;
-        }
-
-        foreach ($category[$parent_id] as $item){
-            $id = $item->id;
-            Category::destroy($item->id);
-            self::recursionDeleteCategory($category,$id);
-        }
-        
-    }
+//        public static function recursionAllCategory($category, $parent_id){
+//
+//            if(empty($category[$parent_id])) {
+//                return;
+//            }
+//            echo '<ul class="list-group">';
+//            foreach ($category[$parent_id] as $item){
+//
+//                echo '<li class="list-group-item"><b>ID:</b>'. $item->id .' <br> <b>Name:</b>' . $item->name .
+//                '; <b>Published:</b>'.$item->published.'; <b>Created:</b>'.$item->created_at;
+//                echo '<li class="list-group-item"><p><a class="sta" href = "/admin-panel/delete-category/'.$item->id.'"><button type="button" class="btn btn-xs btn-default">Delete</button></a>
+//
+//                    <a href="#id" onclick="document.getElementById(\'parent_id\').value =' . $item->id .'"><button type="button"
+//                                                                                                          class="btn btn-xs btn-default">CreateSubCategory</button> </a></li>';
+//
+//
+//                self::recursionAllCategory($category,$item->id);
+//                echo '</li>';
+//
+//            }
+//            echo '</ul>';
+//        }
+//
+//    public static function recursionDeleteCategory($category, $parent_id){
+//
+//        if(empty($category[$parent_id])) {
+//            return;
+//        }
+//
+//        foreach ($category[$parent_id] as $item){
+//            $id = $item->id;
+//            Category::destroy($item->id);
+//            self::recursionDeleteCategory($category,$id);
+//        }
+//
+//    }
 
     public static function recursionDeletePost($post, $parent_id){
 

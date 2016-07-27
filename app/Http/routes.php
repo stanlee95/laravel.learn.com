@@ -16,17 +16,22 @@
 //});
 //
 
+Route::group(['middleware' => 'auth', 'as'=> 'auth'],function(){
+    Route::get('/discuss','PostController@discuss');
+    Route::post('/', 'PostController@post');
+    Route::get('/deleteById/{id}', 'PostController@delete');
+    Route::get('/view/{id}', 'PostController@viewPost');
+    Route::get('/delete/{name}', 'PostController@deleteImage');
+    Route::get('/deleteFile/{name}', 'PostController@deleteFile');
+    Route::post('/uploadMoreFiles/{name}', 'PostController@uploadMoreFiles');
+    Route::get('/response/{id}', 'PostController@response');
+    Route::post('/response-post', 'PostController@responsePost');
+    Route::get('/search-result', 'PostController@search');
+});
+
 //-------------------------------Posts-------------------------------
 Route::get('/','PostController@index');
-Route::post('/', 'PostController@post');
-Route::get('/deleteById/{id}', 'PostController@delete');
-Route::get('/view/{id}', 'PostController@viewPost');
-Route::get('/delete/{name}', 'PostController@deleteImage');
-Route::get('/deleteFile/{name}', 'PostController@deleteFile');
-Route::post('/uploadMoreFiles/{name}', 'PostController@uploadMoreFiles');
-Route::get('/response/{id}', 'PostController@response');
-Route::post('/response-post', 'PostController@responsePost');
-Route::get('/search-result', 'PostController@search');
+
 //-------------------------------Category-------------------------------
 Route::get('/category/{id}', 'CategoryController@index');
 Route::get('/category/{id}/{parent_id}', 'CategoryController@sub');
@@ -55,29 +60,11 @@ Route::group(['middleware'=>'admin', 'as'=> 'admin'],function(){
 Route::get('/user-profile', 'UserController@index');
 Route::post('/user-profile/change', 'UserController@change');
 
+Route::post('/login', 'AuthController@login');
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/test', 'HomeController@cron');
 
-//------LoGin with socials-----------------------------------------
-Route::get('facebookLogin', 'Auth\AuthController@facebookLogin');
-Route::get('facebookCallback', 'Auth\AuthController@facebookCallback');
-
-Route::get('email-check', 'Auth\AuthController@callbackEmailCheck');
-Route::post('email-save', 'Auth\AuthController@callbackEmailSave');
-
-
-Route::get('googleLogin', 'Auth\AuthController@googleLogin');
-Route::get('googleCallback', 'Auth\AuthController@googleCallback');
-
-Route::get('yandexLogin', 'Auth\AuthController@yandexLogin');
-Route::get('yandexCallback', 'Auth\AuthController@yandexCallback');
-
-Route::get('mailruLogin', 'Auth\AuthController@mailruLogin');
-Route::get('mailruCallback', 'Auth\AuthController@mailruCallback');
-
-Route::get('odnoLogin', 'Auth\AuthController@odnoLogin');
-Route::get('odnoCallback', 'Auth\AuthController@odnoCallback');
-//-------------------------------------------------------------------
 //Route::get('/home', 'HomeController@index');

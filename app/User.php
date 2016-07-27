@@ -81,4 +81,44 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Control');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function projects()
+    {
+        return $this->hasMany('App\Models\UserProject');
+    }
+
+//SELECT *
+//FROM projects AS T1
+//INNER JOIN user_project as T2 ON T1.project_id=T2.project_id
+//INNER JOIN users as T3 ON T2.user_id=T3.id
+//WHERE T1.project_id=1;
+
+    /**
+     * @param int $id
+     *
+     * @return array
+     */
+    public static function getUserProjects($id)
+    {
+        $users = \DB::table('projects')
+            ->select('users.id',
+                'users.card_id',
+                'projects.project_id',
+                'projects.status',
+                'projects.started_at',
+                'projects.finished_at',
+                'proposed_projects.title',
+                'proposed_projects.software_requirements',
+                'proposed_projects.recomended_literature')
+            ->leftJoin('proposed_projects', 'projects.project_id', '=', 'proposed_projects.project_id')
+            ->join('user_project', 'projects.project_id', '=', 'user_project.project_id')
+            ->join('users', 'user_project.user_id', '=', 'users.id')
+            ->where('users.id', '=', $id)
+            ->get();
+
+        return $users;
+    }
 }

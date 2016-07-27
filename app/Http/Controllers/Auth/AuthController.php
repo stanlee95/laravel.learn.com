@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-//use Illuminate\Http\Request;
-use App\Http\Request;
+use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -61,6 +60,19 @@ class AuthController extends Controller
     }
 
     /**
+     *
+     * @param  array $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function _validatorLogin(array $data)
+    {
+        return Validator::make($data, [
+            'card_id' => 'required|max:255',
+            'password' => 'required|min:6',
+        ]);
+    }
+
+    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array $data
@@ -80,12 +92,53 @@ class AuthController extends Controller
                 $validator
             );
         }
+        $user = User::where('card_id', '=', $data['card_id'])->where('password', '=', md5($data['password']))
+            ->first();
+        if ($user) {
+            Auth::login($user);
 
-        return User::create([
-            'card_id' => $data['card_id'],
-            'password' => md5($data['password']),
-            'avatar' => isset($data['avatar']) ? $data['avatar'] : null,
-        ]);
+            return back()->with('status', 'User is exist!');
+        }
+
+        return User::create(
+            [
+                'card_id'  => $data['card_id'],
+                'password' => md5($data['password']),
+                'avatar'   => isset($data['avatar']) ? $data['avatar'] : null,
+            ]
+        );
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  Request $request
+     *
+     * @return User|boolean
+     */
+    public function login(Request $request)
+    {
+        if ($data = $request->all()) {
+
+            $validator = $this->_validatorLogin($data);
+            if ($validator->fails()) {
+                $this->throwValidationException(
+                    $request,
+                    $validator
+                );
+            }
+            $user = User::where('card_id', '=', $data['card_id'])->where('password', '=', md5($data['password']))
+                ->first();
+            if ($user) {
+                Auth::login($user);
+
+                return back()->with('status', 'You have logined!');
+            } else {
+                return back()->with('status', 'Check your credentials!');
+            }
+        }
+
+        return true;
     }
 
     public function callbackEmailSave()

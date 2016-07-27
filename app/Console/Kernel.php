@@ -27,9 +27,18 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
-            $connect = new CronInit(new CronLib);
-            $connect->connectToDump();
-        })->everyMinute();
+        $schedule->call(
+            function () {
+                $connect = new CronInit(new CronLib);
+                $connect->connectToDump();
+            }
+        )->everyMinute();
+
+//        $schedule->call(
+//            function () {
+//                $connect = new CronInit(new CronLib);
+//                $connect->clearDump();
+//            }
+//        )->weekly();
     }
 }

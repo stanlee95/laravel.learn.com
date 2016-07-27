@@ -5,34 +5,16 @@
     "second_name": "KHARLAP",
     "department_name": "ComputerScience"
   },
-  {
-    "card_id": "IS16BI001",
-    "first_name": "JACK",
-    "second_name": "LAWLESS",
-    "department_name": "BiologicalScience"
+    {
+    "card_id": "IS16IT001",
+    "first_name": "STANISLAU",
+    "second_name": "KHARLAP",
+    "department_name": "ComputerScience"
   },
-  {
-    "card_id": "IS16MI002",
-    "first_name": "GARRY",
-    "second_name": "MOSSER",
-    "department_name": "Mechanical"
-  },
-  {
-    "card_id": "IS16MI002",
-    "first_name": "GARRY",
-    "second_name": "MOSSER",
-    "department_name": "Mechanical"
-  },
-  {
-    "card_id": "IS16MI006",
-    "first_name": "Stasyamba",
-    "second_name": "MOSSER",
-    "department_name": "Mechanical"
-  },
-  {
-    "card_id": "IS16MI008",
-    "first_name": "Stasyakmba",
-    "second_name": "MOSSEkR",
-    "department_name": "Mekchanical"
+      {
+    "card_id": "IS16MT001",
+    "first_name": "Garry",
+    "second_name": "moser",
+    "department_name": "ComputerScience"
   }
-]
+] 

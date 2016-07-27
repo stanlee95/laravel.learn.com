@@ -24,4 +24,12 @@ class Projects extends Model
 
         return $this->belongsTo('App\Models\UserProject');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function proposed_project(){
+
+        return $this->hasOne('App\Models\ProposedProject');
+    }
 }

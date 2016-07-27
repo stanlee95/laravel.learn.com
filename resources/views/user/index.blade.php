@@ -1,14 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container" align="center" style="margin-top: -50px">
     <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="user-profile/change">
         {!! csrf_field() !!}
         <h3 align="center" style="color: red">{{ session('status') }}</h3>
-    <div class="list-group" id = "user-profile">
-        <button type="button" class="list-group-item">ID: {{Auth::user()->id}}</button>
-        <button type="button" class="list-group-item">Name: {{Auth::user()->name}}</button>
-        <button type="button" class="list-group-item">Email: {{Auth::user()->email}}</button>
-        <button type="button" class="list-group-item">Role: {{Auth::user()->role}}</button>
+    <div class="list-group" id = "user-profile" style="width: 600px">
+        <button type="button" class="list-group-item"><b>ID</b>: {{Auth::user()->id}}</button>
+        <button type="button" class="list-group-item"><b>Card-ID</b>: {{Auth::user()->card_id}}</button>
+        <button type="button" class="list-group-item"><b>FirstName:</b> {{Auth::user()->first_name}}</button>
+        <button type="button" class="list-group-item"><b>SecondName:</b> {{Auth::user()->second_name}}</button>
+        <button type="button" class="list-group-item"><b>DepartmentName:</b> {{Auth::user()->department_name}}</button>
+        <button type="button" class="list-group-item"><b>ValidTo:</b> {{Auth::user()->valid_to}}</button>
+        <button type="button" class="list-group-item"><b>Role:</b> {{Auth::user()->role}}</button>
+        <button type="button" class="list-group-item"><b>Status:</b> {{Auth::user()->status}}</button>
         <button type="button" class="list-group-item">Avatar:
             @if(isset(Auth::user()->avatar))
                 <img class="media-object" src="{{Auth::user()->avatar}}" style="width:120px; height: 120px">
@@ -20,12 +25,10 @@
                 <input type="submit" class="btn btn-primary" value="Upload">
 
             </div>
-
-                </button>
-        <button type="button" class="list-group-item">Created: {{Auth::user()->created_at}}</button>
+        </button>
     </div>
     </form>
-
+</div>
 
 
 @endsection

@@ -34,6 +34,6 @@ class HomeController extends Controller
      */
     public function cron(\Core\Connection\CronLib $class)
     {
-        dd($class->cronStart());
+        $class->cronStart();
     }
 }

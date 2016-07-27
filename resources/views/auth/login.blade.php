@@ -14,7 +14,7 @@
                             <label class="col-md-4 control-label">ID-Number</label>
 
                             <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('card_id') }}">
+                                <input type="text" class="form-control" name="card_id" value="{{ old('card_id') }}">
 
                                 @if ($errors->has('card_id'))
                                     <span class="help-block">

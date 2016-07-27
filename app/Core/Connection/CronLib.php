@@ -14,4 +14,13 @@ class CronLib extends ConnectionAbstract
     {
 		return $this->_prepareToConnection();  
 	}
+
+    /**
+     *
+     * @return $this
+     */
+    public function dumpClear()
+    {
+        return $this->_clearDump();
+    }
 }
