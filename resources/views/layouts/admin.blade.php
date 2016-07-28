@@ -58,9 +58,9 @@
                 <li>
                     <a href="/admin-panel/user-profile"><i class="fa fa-fw fa-user"></i> Profile</a>
                 </li>
-                <li>
-                    <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                </li>
+<!--                <li>-->
+<!--                    <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>-->
+<!--                </li>-->
                 <li class="divider"></li>
                 <li>
                     <a href="{{ url('/logout') }}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -92,15 +92,18 @@
                 <a href="/admin-panel/users"><i class="fa fa-fw fa-edit"></i> Users list</a>
             </li>
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Category <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> News <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
                     <li>
-                        <a href="/admin-panel/all-category">View all category</a>
+                        <a href="/admin-panel/all-category">View all News</a>
                     </li>
-                    {{--<li>--}}
-                        {{--<a href="/admin-panel/add-category">Add new category</a>--}}
-                    {{--</li>--}}
+                    <li>
+                        <a href="/admin-panel/add-category">Add new New</a>
+                    </li>
                 </ul>
+            </li>
+            <li>
+                <a href="/admin-panel/all-projects"><i class="fa fa-fw fa-user"></i>Projects</a>
             </li>
         </ul>
     </div>
@@ -122,6 +125,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 <script src="/js/readmore.js" type="text/javascript"></script>
+<script src="/js/ajax.js" type="text/javascript"></script>
 
 </body>
 </html>

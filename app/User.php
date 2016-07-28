@@ -90,12 +90,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\UserProject');
     }
 
-//SELECT *
-//FROM projects AS T1
-//INNER JOIN user_project as T2 ON T1.project_id=T2.project_id
-//INNER JOIN users as T3 ON T2.user_id=T3.id
-//WHERE T1.project_id=1;
-
     /**
      * @param int $id
      *
@@ -111,6 +105,7 @@ class User extends Authenticatable
                 'projects.started_at',
                 'projects.finished_at',
                 'proposed_projects.title',
+                'proposed_projects.description',
                 'proposed_projects.software_requirements',
                 'proposed_projects.recomended_literature')
             ->leftJoin('proposed_projects', 'projects.project_id', '=', 'proposed_projects.project_id')

@@ -5,110 +5,118 @@ namespace App\Http\Controllers;
 use App\Helpers\Helpers;
 use App\Models\Category;
 use App\User;
-use Illuminate\Support\Facades\Request;
+use Illuminate\View\View;
 use Validator;
 use Illuminate\Support\Facades\Input;
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 
 class AdminController extends Controller
 {
+
+    /**
+     *
+     * @return View;
+     */
     public function index(){
 
         return view('admin.index');
-
     }
 
-    public function users(){
-
-        $users = User::all();
-        return view('admin.users', ['users'=>$users]);
-
-    }
-    //Category---------------------------------------------------------------------------------------
-    public function allCategory(){
-
-        $category = Category::getAllCategory();
-        return view('admin.all-category', ['category' => $category[0], 'sub_category'=> $category[1]]);
-
-    }
-
-    public function deleteCategory($id){
-
-        $id = (int)$id;
-        $category = Category::all();
-        foreach ($category as $item){
-            $sub_category[$item->id] = Category::getAllSubCategory($item->id);
-        }
-
-        if(Category::destroy($id)){
-            Helpers::recursionDeleteCategory($sub_category, $id);
-            return back()->with('status', 'Category deleted');
-        }else{
-            return back()->with('status', 'Error!');
-        }
-        
-    }
-    
-    public function addCategory()
+    /**
+     *
+     * @return View;
+     */
+    public function users()
     {
-        $category = new Category();
-        $category->name = Input::get('name');
-        $category->published = Input::get('published');
-        $category->parent_id = Input::get('parent_id');
+        $users = User::all();
 
-        if($category->save()){
-
-            return back()->with('status', 'Category created');
-        }else{
-            return back()->with('status', 'Error!');
-        }
+        return view('admin.users', ['users' => $users]);
     }
-    //Announcement-----------------------------
 
-    public function allAnnouncement(){
-        $posts = Post::getAllPostNonPublished();
-        $post = array();
+    /**
+     * @param Request $request
+     *
+     * @return Response;
+     */
+    public function status(Request $request)
+    {
+        $data = $request->all();
+        if ($data) {
+            $user = User::where('id', '=', $data['id']);
+            $user->update(
+                [
+                    'status' => $data['status'],
+                ]
+            );
+        }
+
+        return response()->json(['status' => $data['status'], "id" => $data['id']]);
+    }
+
+    /**
+     *
+     * @return View;
+     */
+    public function allAnnouncement()
+    {
+        $posts    = Post::getAllPostNonPublished();
+        $post     = array();
         $comments = array();
-        foreach ($posts as $item){
-            if($item->parent_id==NULL){
-                $post[]= $item;
+        foreach ($posts as $item) {
+            if ($item->parent_id == null) {
+                $post[] = $item;
             }
-            if(Post::getAllCommentsNonPublished($item->id)!==NULL) {
+            if (Post::getAllCommentsNonPublished($item->id) !== null) {
                 $comments[$item->id] = Post::getAllCommentsNonPublished($item->id);
             }
         }
 
-        return view('admin.all-announcement', ['posts'=>$post, 'comments'=>$comments ]);
+        return view('admin.all-announcement', ['posts' => $post, 'comments' => $comments]);
     }
 
-    public function deleteResponse($id){
-        $id = (int)$id;
+    /**
+     * @param int $id
+     *
+     * @return Respone;
+     */
+    public function deleteResponse($id)
+    {
+        $id   = (int)$id;
         $post = Post::find($id);
 
-        if($post->delete()){
+        if ($post->delete()) {
             return back()->with('status', 'Deleted');
-        }else{
+        } else {
             return back()->with('status', 'Error');
-
         }
     }
 
-    public function updateAnnouncement(){
+    /**
+     * @param Input
+     *
+     * @return Response;
+     */
+    public function updateAnnouncement()
+    {
 
-        $post = Post::find(Input::get('id'));
-        $post->title = Input::get('title');
-        $post->content = Input::get('content_full');
-        $post->published  = Input::get('published');
+        $post            = Post::find(Input::get('id'));
+        $post->title     = Input::get('title');
+        $post->content   = Input::get('content_full');
+        $post->published = Input::get('published');
 
-        if($post->save()){
+        if ($post->save()) {
             return back()->with('status', 'Updated');
-        }else{
+        } else {
             return back()->with('status', 'Error');
         }
-
     }
 
+    /**
+     *
+     * @return View;
+     */
     public function addAnnouncement(){
 
         $users = User::all();

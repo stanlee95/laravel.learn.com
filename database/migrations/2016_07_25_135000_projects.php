@@ -16,7 +16,7 @@ class Projects extends Migration
             $table->increments('project_id');
             $table->timestamp('started_at')->nullable();
             $table->timestamp('finished_at')->nullable();
-            $table->enum('status', array('todo', 'done', 'problem'));
+            $table->enum('status', array('check', 'todo', 'done', 'problem'));
             $table->timestamps();
             });
     }

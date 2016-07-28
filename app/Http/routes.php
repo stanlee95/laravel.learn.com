@@ -27,6 +27,10 @@ Route::group(['middleware' => 'auth', 'as'=> 'auth'],function(){
     Route::get('/response/{id}', 'PostController@response');
     Route::post('/response-post', 'PostController@responsePost');
     Route::get('/search-result', 'PostController@search');
+    Route::get('/user-profile', 'UserController@index');
+    Route::post('/user-profile/change', 'UserController@change');
+    Route::post('/user-profile/status', 'UserController@status');
+
 });
 
 //-------------------------------Posts-------------------------------
@@ -41,11 +45,7 @@ Route::group(['middleware'=>'admin', 'as'=> 'admin'],function(){
     Route::get('/admin-panel','AdminController@index');
     Route::get('admin-panel/user-profile','UserController@index');
     Route::get('admin-panel/users','AdminController@users');
-    //Caregory
-    Route::get('admin-panel/all-category','AdminController@allCategory');
-    Route::get('admin-panel/add-category','AdminController@addCategory');
-    Route::get('admin-panel/delete-category/{id}','AdminController@deleteCategory');
-    Route::post('admin-panel/add-category','AdminController@addCategory');
+    Route::post('admin-panel/users/status','AdminController@status');
     //Announcement
     Route::get('admin-panel/all-announcement','AdminController@allAnnouncement');
     Route::get('admin-panel/add-announcement','AdminController@addAnnouncement');
@@ -53,13 +53,20 @@ Route::group(['middleware'=>'admin', 'as'=> 'admin'],function(){
     Route::post('admin-panel/update-announcement','AdminController@updateAnnouncement');
     Route::get('admin-panel/delete-announcement/{id}','AdminController@deleteAnnouncement');
     Route::get('admin-panel/delete-response/{id}', 'AdminController@deleteResponse');
+    //News
+    Route::get('admin-panel/all-news','NewsController@index');
+    Route::post('admin-panel/update-news','NewsController@update');
+    Route::get('admin-panel/delete-news','NewsController@delete');
+    //Projects
+    Route::get('admin-panel/all-projects','ProjectController@index');
+    Route::post('admin-panel/add-projects','ProjectController@edit');
+    Route::get('admin-panel/delete-projects','ProjectController@delete');
+    Route::get('admin-panel/get-project','ProjectController@getProject');
+    Route::post('admin-panel/assign-projects','ProjectController@assign');
 });
 
 
 //------------------UserProfile------------------------------------
-Route::get('/user-profile', 'UserController@index');
-Route::post('/user-profile/change', 'UserController@change');
-
 Route::post('/login', 'AuthController@login');
 
 Route::auth();

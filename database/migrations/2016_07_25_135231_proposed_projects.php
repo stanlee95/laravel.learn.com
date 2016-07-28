@@ -16,6 +16,7 @@ class ProposedProjects extends Migration
             $table->increments('id');
             $table->integer('project_id')->unsigned();
             $table->string('title')->nullable();
+            $table->string('description')->nullable();
             $table->string('software_requirements')->nullable();
             $table->string('recomended_literature')->nullable();
             $table->timestamps();
