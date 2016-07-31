@@ -95,10 +95,7 @@
                 <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> News <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
                     <li>
-                        <a href="/admin-panel/all-category">View all News</a>
-                    </li>
-                    <li>
-                        <a href="/admin-panel/add-category">Add new New</a>
+                        <a href="/admin-panel/news">View all News</a>
                     </li>
                 </ul>
             </li>

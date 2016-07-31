@@ -155,7 +155,7 @@ class PostController extends Controller
             $photos->delete();
             $files->delete();
 
-            return response()->json(['status' => 'success']);
+            return back()->with('status', 'Post deleted!');
         } else {
             return back()->with('status', 'Post dont deleted!');
         }

@@ -10,10 +10,10 @@ class ProposedProjects extends Model
     protected $fillable = ['project_id', 'title', 'description', 'software_requirements', 'recomended_literature'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function projects(){
 
-        return $this->hasMany('App\Models\Projects');
+        return $this->belongsTo('App\Models\Projects');
     }
 }

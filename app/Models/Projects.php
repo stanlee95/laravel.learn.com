@@ -8,7 +8,7 @@ class Projects extends Model
 {
     protected $table = 'projects';
 
-    protected $fillable = ['started_at', 'finished_at', 'status'];
+    protected $fillable = ['project_id', 'started_at', 'finished_at', 'status'];
 
 	/**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -27,11 +27,11 @@ class Projects extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function proposed_project(){
 
-        return $this->hasOne('App\Models\ProposedProject');
+        return $this->hasOne('App\Models\ProposedProjects', 'project_id');
     }
 
     /**

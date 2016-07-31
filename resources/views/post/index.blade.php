@@ -83,11 +83,11 @@
 
         </ul>
 
-        <label for="inputEmail" class="sr-only">Title</label>
-        <input type="text" class="form-control" name="title" placeholder="Insert Title">
+        <input type="text" class="form-control" name="title" placeholder="Insert Project Name">
         <br>
+        <p><b>Insert your Question:</b></p>
         <div>
-            <textarea name="content_full" rows="10" cols="65" required autofocus> </textarea>
+            <textarea name="content_full" id="content" rows="10" cols="65" required autofocus> </textarea>
         </div>
         <div class="row">
             <div class="col-lg-6">

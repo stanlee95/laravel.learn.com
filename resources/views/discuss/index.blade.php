@@ -39,7 +39,7 @@
                                 <a href="response/{{$post->id }}" style="color: white">Send Response</a>
                             </button>
 
-                            @if (!Auth::guest())
+                            @if (Auth::user()->card_id == $post->user_name)
                                 <button class="btn btn-primary" id="deletePost" type="button">
                                     <a href="#" onclick="ajaxDelete({{$post->id}}); return false;" style="color: white">Delete message</a>
                                 </button>

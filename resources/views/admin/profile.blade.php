@@ -18,7 +18,7 @@
                     <button type="button" class="list-group-item"><b>Role:</b> {{Auth::user()->role}}</button>
                     <button type="button" class="list-group-item">Avatar:
                         @if(isset(Auth::user()->avatar))
-                        <img class="media-object" src="{{Auth::user()->avatar}}" style="width:120px; height: 120px">
+                        <img class="media-object" src="/{{Auth::user()->avatar}}" style="width:120px; height: 120px">
                         @else
                         <img class="media-object" src="/uploads/user_image/no_avatar.jpg" style="width:120px; height: 120px">
                         @endif

@@ -44,6 +44,7 @@ Route::get('/category/{id}/{parent_id}', 'CategoryController@sub');
 Route::group(['middleware'=>'admin', 'as'=> 'admin'],function(){
     Route::get('/admin-panel','AdminController@index');
     Route::get('admin-panel/user-profile','UserController@index');
+    Route::post('admin-panel/user-profile/change','UserController@change');
     Route::get('admin-panel/users','AdminController@users');
     Route::post('admin-panel/users/status','AdminController@status');
     //Announcement
@@ -60,9 +61,14 @@ Route::group(['middleware'=>'admin', 'as'=> 'admin'],function(){
     //Projects
     Route::get('admin-panel/all-projects','ProjectController@index');
     Route::post('admin-panel/add-projects','ProjectController@edit');
-    Route::get('admin-panel/delete-projects','ProjectController@delete');
-    Route::get('admin-panel/get-project','ProjectController@getProject');
+    Route::get('admin-panel/delete-projects/{id}','ProjectController@delete');
+    Route::get('admin-panel/get-project/{id}','ProjectController@getProject');
     Route::post('admin-panel/assign-projects','ProjectController@assign');
+    //News
+    Route::get('admin-panel/news','NewsController@index');
+    Route::post('admin-panel/add-new','NewsController@edit');
+    Route::get('admin-panel/delete-new/{id}','NewsController@delete');
+    Route::get('admin-panel/get-new/{id}','NewsController@getNew');
 });
 
 
@@ -74,4 +80,9 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 Route::get('/test', 'HomeController@cron');
 
+
+//------------------News------------------------------------
+Route::get('/news', 'NewsController@index');
+Route::get('/news/page/{page}', 'NewsController@index');
+Route::get('/full-new/{id}', 'NewsController@view');
 //Route::get('/home', 'HomeController@index');
